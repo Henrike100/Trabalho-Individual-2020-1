@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client:/usr/src/client
+
+# start
+# sudo docker-compose up
+
+# rebuild image and start
+# sudo docker-compose up --build
