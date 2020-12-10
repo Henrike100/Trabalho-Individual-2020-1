@@ -15,7 +15,7 @@ before_install:
 jobs:
   include:
     - stage: build
-      script: docker-compose up
+      script: docker-compose up --build -d
 
     - stage: test
       script: docker-compose run --rm client yarn run test:unit
