@@ -8,10 +8,10 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./client:/usr/src/client
-
-# start
-# sudo docker-compose up
+      - /usr/src/client/node_modules
 
 # rebuild image and start
-# sudo docker-compose up --build
+# sudo docker-compose up --build -d
+
+# test client
+# sudo docker-compose run --rm client yarn run test:unit

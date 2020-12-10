@@ -1,11 +1,9 @@
-FROM node:latest
+FROM node:10
 
 WORKDIR /usr/src/client
-COPY ./package*.json ./
+COPY . .
 
 RUN yarn install
-
-COPY . .
 
 EXPOSE 8080
 
