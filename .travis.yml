@@ -28,5 +28,5 @@ deploy:
   provider: heroku
   api_key:
     - secure: $SECURE_KEY
-  app: gces-trabalho-individual-2020
+  app: $APP
   on: master
