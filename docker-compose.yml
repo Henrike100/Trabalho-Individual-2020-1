@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   client:
+    container_name: client
     build:
       context: ./client
       dockerfile: Dockerfile
@@ -9,6 +10,31 @@ services:
       - 8080:8080
     volumes:
       - /usr/src/client/node_modules
+  
+  api:
+    container_name: api
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
+    ports: 
+      - 3000:3000
+    env_file: ./api/db.env
+    depends_on:
+      - database
+    networks: 
+      - backend
+
+  database:
+    container_name: database
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    env_file: ./api/db.env
+    networks:
+      - backend
+
+networks:
+  backend:
 
 # rebuild image and start
 # sudo docker-compose up --build -d
