@@ -5,7 +5,8 @@ services:
 
 stages:
   - build
-  - test
+  - test_client
+  - test_api
   - deploy
 
 before_install:
@@ -18,9 +19,10 @@ jobs:
   - stage: build
     script: docker-compose up --build -d
 
-  - stage: test
+  - stage: test_client
     script: docker-compose run --rm client yarn run test:unit # test client
-  - stage: test
+
+  - stage: test_api
     script: docker-compose run --rm api bundle exec rails test # test api
 
   - stage: deploy
