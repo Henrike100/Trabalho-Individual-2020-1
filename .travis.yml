@@ -18,8 +18,24 @@ jobs:
   - stage: test
     script: docker-compose run --rm api bundle exec rails test # test api
 
-deploy:
-  provider: heroku
-  api_key: $SECURE_KEY
-  app: $APP
-  on: master
+  - stage: deploy client
+    script: skip
+    before_deploy:
+    - cd client
+    deploy:
+      provider: heroku
+      api_key: $SECURE_KEY
+      app: $APP_CLIENT
+      on:
+        branch: master
+
+  - stage: deploy api
+    script: skip
+    before_deploy:
+    - cd api
+    deploy:
+      provider: heroku
+      api_key: $SECURE_KEY
+      app: $APP_API
+      on:
+        branch: master
