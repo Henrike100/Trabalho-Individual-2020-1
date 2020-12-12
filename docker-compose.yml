@@ -27,8 +27,6 @@ services:
   database:
     container_name: database
     image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
     env_file: ./api/db.env
     networks:
       - backend
