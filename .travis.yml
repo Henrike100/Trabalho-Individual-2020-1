@@ -15,14 +15,17 @@ before_install:
 
 jobs:
   include:
-    - stage: build
-      script: docker-compose up --build -d
+  - stage: build
+    name: Build Project
+    script: docker-compose up --build -d
 
-    - stage: test_client
-      script: docker-compose run --rm client yarn run test:unit # test client
+  - stage: test_client
+    name: Test Client (Front-End)
+    script: docker-compose run --rm client yarn run test:unit # test client
     
-    - stage: test_api
-      script: docker-compose run --rm api bundle exec rails test # test api
+  - stage: test_api
+    name: Test API (Back-End)
+    script: docker-compose run --rm api bundle exec rails test # test api
 
 deploy:
   provider: heroku
