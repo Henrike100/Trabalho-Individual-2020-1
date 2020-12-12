@@ -5,8 +5,7 @@ services:
 
 stages:
   - build
-  - test_client
-  - test_api
+  - test
 
 before_install:
   - sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
@@ -15,21 +14,9 @@ before_install:
 
 jobs:
   include:
-  - stage: build
-    name: Build Project
-    script: docker-compose up --build -d
+    - stage: build
+      script: docker-compose up --build -d
 
-  - stage: test_client
-    name: Test Client (Front-End)
-    script: docker-compose run --rm client yarn run test:unit # test client
-    
-  - stage: test_api
-    name: Test API (Back-End)
-    script: docker-compose run --rm api bundle exec rails test # test api
-
-deploy:
-  provider: heroku
-  api_key:
-    - secure: $SECURE_KEY
-  app: $APP
-  on: master
+    - stage: test
+      script: docker-compose run --rm client yarn run test:unit # test client
+      script: docker-compose run --rm api bundle exec rails test # test api
