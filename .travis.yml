@@ -18,5 +18,7 @@ jobs:
       script: docker-compose up --build -d
 
     - stage: test
-      script: docker-compose run --rm client yarn run test:unit # test client
-      script: docker-compose run --rm api bundle exec rails test # test api
+      - script:
+        -docker-compose run --rm client yarn run test:unit # test client
+      - script:
+        - docker-compose run --rm api bundle exec rails test # test api
