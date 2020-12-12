@@ -35,9 +35,3 @@ services:
 
 networks:
   backend:
-
-# rebuild image and start
-# sudo docker-compose up --build -d
-
-# test client
-# sudo docker-compose run --rm client yarn run test:unit

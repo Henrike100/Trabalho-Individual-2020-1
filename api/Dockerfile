@@ -20,6 +20,3 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
 CMD ["rails", "server", "-p", "3000", "-b", "0.0.0.0"]
-
-# sudo docker build --tag dockerback .
-# sudo docker run --publish 3000:3000 --name dback dockerback:latest
