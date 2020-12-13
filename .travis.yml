@@ -18,7 +18,7 @@ jobs:
   - stage: test
     script: docker-compose run --rm api bundle exec rails test # test api
 
-  - stage: deploy to heroku
+  - stage: deploy client
     script: skip
     before_deploy:
     - cd client
@@ -29,7 +29,7 @@ jobs:
       on:
         branch: master
 
-  - stage: deploy to heroku
+  - stage: deploy api
     script: skip
     before_deploy:
     - cd api
