@@ -4,24 +4,20 @@ services:
   client:
     container_name: client
     build:
-      context: .
-      dockerfile: ./client/Dockerfile
+      context: ./client
+      dockerfile: Dockerfile
     ports:
       - 8080:8080
     volumes:
-      - ./client:/usr/src/client
       - node_modules:/usr/src/client/node_modules
   
   api:
     container_name: api
     build: 
-      context: .
-      dockerfile: ./api/Dockerfile
+      context: ./api
+      dockerfile: Dockerfile
     ports: 
       - 3000:3000
-    volumes:
-      - ./api:/usr/src/api
-      - gems:/usr/local/bundle/gems
     env_file: ./api/db.env
     depends_on:
       - database
@@ -42,5 +38,4 @@ networks:
 
 volumes:
   node_modules:
-  gems:
   db:
