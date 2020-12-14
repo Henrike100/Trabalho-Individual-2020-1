@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve --host 0.0.0.0",
-    "docker": "./docker-test-script.sh"
+    "docker": "./docker-test-script.sh",
+    "start": "node src/main.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.1",
