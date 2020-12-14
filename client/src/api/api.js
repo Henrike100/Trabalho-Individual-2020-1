@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const base = 'http://localhost:3000/api/v1'
+const base = 'https://gces-individual-api.herokuapp.com/'
 
 const API = axios.create({
   baseURL: base
