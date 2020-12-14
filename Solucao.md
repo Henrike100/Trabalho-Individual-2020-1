@@ -48,4 +48,4 @@ Para a coleta de métricas, foi utilizado o <b>Code Climate</b>.
 
 O deploy foi feito no <b>Heroku</b>. Após a etapa de `build` e `teste` ter terminado com sucesso, o Travis CI faz deploy automático da aplicação.
 
-[Link](https://dashboard.heroku.com/apps/gces-individual-client) para a aplicação.
+[Link](https://gces-individual-client.herokuapp.com/#/) para a aplicação.
